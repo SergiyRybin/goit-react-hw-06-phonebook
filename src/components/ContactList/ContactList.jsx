@@ -1,18 +1,19 @@
 import React from 'react';
 import ContactCard from 'components/ContactCard/ContactCard';
 import { useSelector } from 'react-redux';
+import { contactValue, filterValue } from 'redux/store';
 
 function ContactList() {
-  const state = useSelector(state => state.myValue);
-  const filter = useSelector(state => state.filter);
+  const filterBook = useSelector(contactValue);
+  const filterData = useSelector(filterValue);
 
-  const filterBook = state.filter(({ name }) =>
-    name.toLowerCase().startsWith(filter.toLowerCase())
+  const data = filterBook.filter(({ name }) =>
+    name.toLowerCase().startsWith(filterData.toLowerCase())
   );
 
   return (
     <ul>
-      {filterBook.map((contact, index) => (
+      {data.map((contact, index) => (
         <ContactCard contact={contact} key={index} />
       ))}
     </ul>
