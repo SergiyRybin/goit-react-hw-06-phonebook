@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
+
 
 const mySlice = createSlice({
   name: 'myValue',
