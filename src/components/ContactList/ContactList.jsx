@@ -1,23 +1,22 @@
 import React from 'react';
 import ContactCard from 'components/ContactCard/ContactCard';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-const ContactList = ({ filterBook, onRemove }) => (
-  <ul>
-    {filterBook.map((contact, index) => (
-      <ContactCard
-        con={contact}
-        onRemove={onRemove}
-        index={index}
-        key={index}
-      />
-    ))}
-  </ul>
-);
+function ContactList() {
+  const state = useSelector(state => state.myValue);
+  const filter = useSelector(state => state.filter);
 
-ContactList.propTypes = {
-  onRemove: PropTypes.func.isRequired,
-  filterBook: PropTypes.array.isRequired,
-};
+  const filterBook = state.filter(({ name }) =>
+    name.toLowerCase().startsWith(filter.toLowerCase())
+  );
+
+  return (
+    <ul>
+      {filterBook.map((contact, index) => (
+        <ContactCard contact={contact} key={index} />
+      ))}
+    </ul>
+  );
+}
 
 export default ContactList;

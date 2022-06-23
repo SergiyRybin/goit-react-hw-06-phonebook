@@ -1,19 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { removeContact } from 'redux/store';
+import { useDispatch } from 'react-redux';
 
-const ContactCard = ({ onRemove, con, index }) => (
-  <li key={index}>
-    {con.name}: {con.number}
-    <button type="submite" className="delete" onClick={onRemove}>
-      Delete
-    </button>
-  </li>
-);
+const ContactCard = ({ contact }) => {
+  const dispatch = useDispatch();
+  const remove = () => dispatch(removeContact(contact.name));
+
+  return (
+    <li>
+      {contact.name}: {contact.number}
+      <button type="submite" className="delete" onClick={remove}>
+        Delete
+      </button>
+    </li>
+  );
+};
 
 ContactCard.propTypes = {
-  onRemove: PropTypes.func.isRequired,
-  con: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
+  contact: PropTypes.object.isRequired,
 };
 
 export default ContactCard;
