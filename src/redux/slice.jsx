@@ -4,7 +4,7 @@ export const mySlice = createSlice({
   name: 'myValue',
   initialState: {
     contacts: {
-      items: JSON.parse(localStorage.getItem('contacts')) ?? [],
+      items: [],
       filter: '',
     },
   },
@@ -12,7 +12,6 @@ export const mySlice = createSlice({
   reducers: {
     addContact(state, action) {
       state.contacts.items.push(action.payload);
-      localStorage.setItem('contacts', JSON.stringify(state.contacts.items));
     },
     removeContact(state, action) {
       const remove = state.contacts.items.filter(
