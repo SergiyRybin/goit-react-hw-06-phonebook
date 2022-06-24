@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { mySlice } from './slice';
 // import { getPersistConfig } from 'redux-deep-persist';
-
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import {
   persistStore,
   persistReducer,
@@ -23,9 +23,10 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'contacts',
   storage,
-  whitelist: ['myValue.contacts.items'],
+  stateReconciler: autoMergeLevel2,
+  // whitelist: ['myValue.contacts.items'],
 
-  blacklist: ['myValue.contacts.items.filter'],
+  // blacklist: ['myValue.contacts.items.filter'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
