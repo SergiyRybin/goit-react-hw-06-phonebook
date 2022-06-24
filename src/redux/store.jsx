@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { mySlice } from './slice';
-import { getPersistConfig } from 'redux-deep-persist';
+// import { getPersistConfig } from 'redux-deep-persist';
 
 import {
   persistStore,
