@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { removeContact } from 'redux/store';
+import { removeContact } from 'redux/slice';
 import { useDispatch } from 'react-redux';
 
 const ContactCard = ({ contact }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactCard from 'components/ContactCard/ContactCard';
 import { useSelector } from 'react-redux';
-import { contactValue, filterValue } from 'redux/store';
+import { contactValue, filterValue } from 'redux/slice';
 
 function ContactList() {
   const filterBook = useSelector(contactValue);
