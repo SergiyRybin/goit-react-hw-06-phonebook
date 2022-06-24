@@ -1,6 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-
 const mySlice = createSlice({
   name: 'myValue',
   initialState: JSON.parse(localStorage.getItem('contacts')) ?? [],
@@ -33,6 +32,8 @@ export const { removeContact } = mySlice.actions;
 
 export const { filterContact } = myFilter.actions;
 
+//Store
+
 export const store = configureStore({
   reducer: {
     myValue: mySlice.reducer,
@@ -40,8 +41,7 @@ export const store = configureStore({
   },
 });
 
-export  const contactValue = state => state.myValue;
+//State value
+
+export const contactValue = state => state.myValue;
 export const filterValue = state => state.filter;
-
-
-
