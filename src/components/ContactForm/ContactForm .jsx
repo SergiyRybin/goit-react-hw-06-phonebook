@@ -12,6 +12,7 @@ function ContactForm() {
     e.preventDefault();
     const { name, number } = e.currentTarget.elements;
     if (nameAdd.find(el => el.toLowerCase() === name.value.toLowerCase())) {
+      e.currentTarget.reset();
       return alert(`${name.value} is already in contacts`);
     }
     dispatch(
